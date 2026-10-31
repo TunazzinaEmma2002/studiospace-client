@@ -2,6 +2,7 @@ import "./globals.css";
 import { Orbitron, Rajdhani } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { Toaster } from "sonner";
 
 const display = Orbitron({ subsets: ["latin"], variable: "--font-display" });
 const body = Rajdhani({
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );
