@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# StudioSpace
 
-## Getting Started
+A peer-to-peer creative studio booking platform. Creators book photo studios, sound stages, podcast rooms, music suites and art workshops by the hour, and hosts list and manage their own spaces.
 
-First, run the development server:
+**Live site:** https://studiospace-client-lake.vercel.app
+**Server API:** https://studiospace-server-black.vercel.app
+**Server repo:** https://github.com/TunazzinaEmma2002/studiospace-server
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Test credentials
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Role | Email | Password |
+|---|---|---|
+| Examiner | examiner@studiospace.com | Examiner123 |
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+You can also register a new account.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key features
 
-## Learn More
+- **Cinematic anime-style home page** with a Swiper hero, featured studios from MongoDB, category browsing, "How Booking Works" and "Host Guarantee" sections.
+- **Authentication** with BetterAuth: email and password (uppercase, lowercase and 6+ characters enforced). Logged-in users stay logged in after a page reload.
+- **Explore Studios** with search, category filter, price sorting, equal-height cards and loading skeletons.
+- **Studio details** with an image gallery, amenities, host info, reviews and star ratings.
+- **Booking with double-booking prevention**: overlapping slots are rejected when a host confirms a booking.
+- **Host tools**: add, update and delete studios (with a confirmation modal), and confirm, decline or complete booking requests.
+- **My Bookings** with status badges (Pending, Confirmed, Completed, Cancelled) and a cancel option for Pending bookings.
+- **JWT in HTTPOnly cookies**: the Express server issues the JWT, protects private routes and returns 401 for unauthenticated requests.
+- **Light and dark theme toggle**, custom 404 page, empty states and Sonner toast notifications.
+- Fully responsive layout.
 
-To learn more about Next.js, take a look at the following resources:
+## Tech stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js 16 (App Router), React, Tailwind CSS 4, daisyUI 5
+- BetterAuth with the MongoDB adapter
+- Swiper, Sonner, React Icons
+- Express and MongoDB Atlas (server repo), JSON Web Tokens
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Run locally
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the repo and install packages:
+   ```bash
+   git clone https://github.com/TunazzinaEmma2002/studiospace-client.git
+   cd studiospace-client
+   npm install
+   ```
+2. Create a `.env.local` file:
+   ```
+   MONGODB_URI=your_mongodb_connection_string
+   BETTER_AUTH_SECRET=a_long_random_string
+   BETTER_AUTH_URL=http://localhost:3000
+   JWT_SECRET=the_same_secret_as_the_server
+   API_URL=http://localhost:5000
+   NEXT_PUBLIC_IMGBB_KEY=your_imgbb_key
+   ```
+3. Start the server from the server repo (`node index.js`), then start the client:
+   ```bash
+   npm run dev
+   ```
+4. Open http://localhost:3000
