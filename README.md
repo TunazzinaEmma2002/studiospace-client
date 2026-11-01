@@ -12,12 +12,12 @@ A peer-to-peer creative studio booking platform. Creators book photo studios, so
 |---|---|---|
 | Examiner | examiner@studiospace.com | Examiner123 |
 
-You can also register a new account.
+You can also register a new account, or continue with Google.
 
 ## Key features
 
 - **Cinematic anime-style home page** with a Swiper hero, featured studios from MongoDB, category browsing, "How Booking Works" and "Host Guarantee" sections.
-- **Authentication** with BetterAuth: email and password (uppercase, lowercase and 6+ characters enforced). Logged-in users stay logged in after a page reload.
+- **Authentication** with BetterAuth: email and password (uppercase, lowercase and 6+ characters enforced) and Google sign in. Logged-in users stay logged in after a page reload.
 - **Explore Studios** with search, category filter, price sorting, equal-height cards and loading skeletons.
 - **Studio details** with an image gallery, amenities, host info, reviews and star ratings.
 - **Booking with double-booking prevention**: overlapping slots are rejected when a host confirms a booking.
@@ -50,6 +50,8 @@ You can also register a new account.
    JWT_SECRET=the_same_secret_as_the_server
    API_URL=http://localhost:5000
    NEXT_PUBLIC_IMGBB_KEY=your_imgbb_key
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
    ```
 3. Start the server from the server repo (`node index.js`), then start the client:
    ```bash
