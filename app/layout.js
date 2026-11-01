@@ -3,6 +3,7 @@ import { Orbitron, Rajdhani } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Toaster } from "sonner";
+import AuthSync from "./components/AuthSync"; 
 
 const display = Orbitron({ subsets: ["latin"], variable: "--font-display" });
 const body = Rajdhani({
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       className={`${display.variable} ${body.variable}`}
     >
       <body className="min-h-screen flex flex-col text-lg">
+        <AuthSync />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

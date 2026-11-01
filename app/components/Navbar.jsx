@@ -45,6 +45,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     closeMenu();
+    await fetch("/server/logout", { method: "POST" }).catch(() => {});
     await signOut();
     toast.success("Logged out successfully");
     router.push("/");
