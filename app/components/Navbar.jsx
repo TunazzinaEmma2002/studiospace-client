@@ -54,23 +54,26 @@ export default function Navbar() {
   return (
     <header className="glass sticky top-0 z-50 rounded-none border-x-0 border-t-0">
       <div className="navbar mx-auto max-w-7xl px-4">
-        <div className="navbar-start">
+        <div className="navbar-start min-w-0 max-lg:w-auto! max-lg:flex-1">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-sm px-2 lg:hidden">
               <FaBars />
             </div>
             <ul tabIndex={0} className="menu dropdown-content glass z-10 mt-3 w-56 p-2 shadow">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} onClick={closeMenu} className={pathname === l.href ? "font-bold text-primary" : ""}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+  {links.map((l) => (
+    <li key={l.href}> ... </li>
+  ))}
+  {!user && !isPending && (
+    <li className="sm:hidden">
+      <Link href="/login" onClick={closeMenu}>
+        Login
+      </Link>
+    </li>
+  )}
+</ul>
           </div>
 
-          <Link href="/" className="flex items-center gap-2 font-display text-2xl font-bold">
+          <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold sm:text-2xl">
             <FaCamera className="glow-pulse text-primary" />
             <span className="neon-text">StudioSpace</span>
           </Link>
@@ -95,7 +98,7 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <div className="navbar-end gap-2">
+        <div className="navbar-end gap-1 sm:gap-2 max-lg:w-auto! max-lg:flex-none">
           <button onClick={toggleTheme} className="btn btn-ghost btn-circle text-lg" aria-label="Toggle theme">
             {theme === "studio-dark" ? <FaSun className="text-warning" /> : <FaMoon />}
           </button>
@@ -138,7 +141,7 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link href="/login" className="btn btn-outline btn-primary btn-sm">
+              <Link href="/login" className="btn btn-outline btn-primary btn-sm hidden sm:inline-flex">
                 Login
               </Link>
               <Link href="/register" className="btn btn-neon btn-sm">
