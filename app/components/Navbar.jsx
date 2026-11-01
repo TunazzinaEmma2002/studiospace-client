@@ -59,18 +59,26 @@ export default function Navbar() {
             <div tabIndex={0} role="button" className="btn btn-ghost btn-sm px-2 lg:hidden">
               <FaBars />
             </div>
-            <ul tabIndex={0} className="menu dropdown-content glass z-10 mt-3 w-56 p-2 shadow">
-  {links.map((l) => (
-    <li key={l.href}> ... </li>
-  ))}
-  {!user && !isPending && (
-    <li className="sm:hidden">
-      <Link href="/login" onClick={closeMenu}>
-        Login
-      </Link>
-    </li>
-  )}
-</ul>
+                      <ul tabIndex={0} className="menu dropdown-content z-10 mt-3 w-56 rounded-box border border-primary/30 bg-base-100 p-2 shadow-xl">
+              {links.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    onClick={closeMenu}
+                    className={pathname === l.href ? "font-bold text-primary" : "text-base-content"}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+              {!user && !isPending && (
+                <li className="sm:hidden">
+                  <Link href="/login" onClick={closeMenu}>
+                    Login
+                  </Link>
+                </li>
+              )}
+            </ul>
           </div>
 
           <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold sm:text-2xl">
